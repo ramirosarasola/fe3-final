@@ -9,6 +9,10 @@ const Favs = () => {
 
   const show = false;
   const [destacados, setDestacados] = useState([]);
+  
+  const handleRenderFavs = (newFavs) =>{
+    setDestacados(newFavs)
+  }
 
   useEffect(() => {
     if(JSON.parse(localStorage.getItem('favs'))){
@@ -28,7 +32,7 @@ const Favs = () => {
         {/* este componente debe consumir los destacados del localStorage */}
         {destacados.map((fav, index) =>{
           return(
-            <Card key={index} name={fav.name} username={fav.username} id={fav.id} show={show}/>
+            <Card key={index} name={fav.name} username={fav.username} id={fav.id} show={show} renderFavs={handleRenderFavs}/>
           )
         })}
 

@@ -3,7 +3,7 @@ import doctor from '../assets/doctor.jpg'
 import { Link } from 'react-router-dom';
 import { useContextGlobal } from "./utils/global.context";
 
-const Card = ({ name, username, id, show}) => {
+const Card = ({ name, username, id, show, renderFavs}) => {
 
   const {favs, setFavs} = useContextGlobal()
 
@@ -33,6 +33,7 @@ const Card = ({ name, username, id, show}) => {
       newFavs.splice(index, 1);
       setFavs(newFavs);
       localStorage.setItem("favs", JSON.stringify(newFavs));
+      renderFavs(newFavs)
     }
   }
   
