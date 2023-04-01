@@ -1,39 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import doctor from '../assets/doctor.jpg'
 import { Link } from 'react-router-dom';
 import { useContextGlobal } from "./utils/global.context";
 
-const Card = ({ name, username, id }) => {
+const Card = ({ name, username, id, show}) => {
 
   const {favs, setFavs} = useContextGlobal()
-  // const [asd, setasd] = useState([])
-  const [n, setN] = useState(0)
 
-  const addFav = ()=>{
-    // Aqui iria la logica para agregar la Card en el localStorage
-    const fav ={
+  useEffect(() => {
+    const storedFavs = JSON.parse(localStorage.getItem("favs"));
+    if (storedFavs) {
+      setFavs(storedFavs);
+    }
+  }, []);
+  
+  const addFav = () => {
+    const fav = {
       'id': id,
       'name': name,
       'username': username,
     }
-
-        
-    const storedFavs = JSON.parse(localStorage.getItem('favs'));
-    const updateFavs = [...storedFavs, fav];
-    setFavs(updateFavs);
-    setN(n+1);
-    // setasd(favs)
-  }
-  useEffect(() => {
-    if(favs.length ){
-      localStorage.setItem('favs', JSON.stringify(favs));
-    }    
-  },[favs]);
   
-  // console.log(storedFavs);
+    const updateFavs = [...favs, fav];
+    setFavs(updateFavs);
+    localStorage.setItem("favs", JSON.stringify(updateFavs));
+  }
 
-
-
+  const removeFav = () => {
+    const index = favs.findIndex(fav => fav.id === id);
+    if (index !== -1) {
+      const newFavs = [...favs];
+      newFavs.splice(index, 1);
+      setFavs(newFavs);
+      localStorage.setItem("favs", JSON.stringify(newFavs));
+    }
+  }
+  
 
 
   return (
@@ -47,7 +49,17 @@ const Card = ({ name, username, id }) => {
 
 
         {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-        <button onClick={addFav} className="favButton">Add fav</button>
+
+        {show
+        &&
+          <button onClick={addFav} className="favButton">Add fav</button>
+        }
+
+        {!show 
+        && 
+        <button onClick={removeFav} className="favButton">Eliminar</button>
+        }
+        
     </div>
   );
 };
