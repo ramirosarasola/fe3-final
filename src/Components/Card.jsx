@@ -43,6 +43,7 @@ const Card = ({ name, username, id, show, renderFavs}) => {
 
 
   return (
+    
     <div className="card">
         {/* En cada card deberan mostrar en name - username y el id */}
         <Link to={`/detail/${id}`}> <img src={doctor} alt="doctor-image"/></Link>
