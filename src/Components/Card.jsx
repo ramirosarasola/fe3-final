@@ -20,10 +20,13 @@ const Card = ({ name, username, id, show, renderFavs}) => {
       'name': name,
       'username': username,
     }
-  
-    const updateFavs = [...favs, fav];
-    setFavs(updateFavs);
-    localStorage.setItem("favs", JSON.stringify(updateFavs));
+    
+    const index = favs.findIndex(fav => fav.id === id);
+    if(index === -1){
+      const updateFavs = [...favs, fav];
+      setFavs(updateFavs);
+      localStorage.setItem("favs", JSON.stringify(updateFavs));
+    }
   }
 
   const removeFav = () => {

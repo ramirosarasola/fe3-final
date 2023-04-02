@@ -6,7 +6,6 @@ import Card from '../Components/Card'
 const Home = () => {
 
   const [userList, setUserList] = useState([])
-  const show = true;
 
   const url = 'https://jsonplaceholder.typicode.com/users'
 
@@ -29,7 +28,7 @@ const Home = () => {
 
         {userList.map( (user) => {
           return(
-            <Card key={user.id} name={user.name} username={user.username} id={user.id} show={show}/>
+            <Card key={user.id} name={user.name} username={user.username} id={user.id} show={true}/>
           )
         })}
 
