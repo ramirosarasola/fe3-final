@@ -7,7 +7,7 @@ import { useContextGlobal } from '../Components/utils/global.context'
 
 const Home = () => {
  
-  const {theme} = useContextGlobal();
+  const {state} = useContextGlobal();
 
 
 
@@ -16,7 +16,7 @@ const Home = () => {
       <h1>Home</h1>
       <div className='card-grid'>
 
-        {theme.data.map( (user) => {
+        {state.data.map( (user) => {
           return(
             <Card key={user.id} name={user.name} username={user.username} id={user.id} show={true}/>
           )

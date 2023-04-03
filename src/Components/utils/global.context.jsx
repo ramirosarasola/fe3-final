@@ -1,31 +1,43 @@
-import { createContext, useContext ,useState, useEffect } from "react";
+import { createContext, useContext ,useState, useEffect, useReducer} from "react";
 
 const initialState = {theme: "", data: []}
 
 const ContextGlobal = createContext();
 
-export const ContextProvider = ({ children }) => {
-  //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'SET_THEME':
+      return { ...state, theme: action.payload };
+    case 'SET_DATA':
+      return { ...state, data: action.payload };
+    default:
+      return state;
+  }
+};
 
+export const ContextProvider = ({ children }) => {
   const [favs, setFavs] = useState([]);
-  const [theme , setTheme] = useState(initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     async function fetchDataAsync() {
       const response = await fetch('https://jsonplaceholder.typicode.com/users');
       const info = await response.json();
-      setTheme({...theme,data:info});
+      dispatch({ type: 'SET_DATA', payload: info });
     }
     fetchDataAsync();
   }, []);
 
-  console.log(theme);
+  const handleThemeChange = () => {
+    dispatch({ type: 'SET_THEME', payload: state.theme === 'dark' ? '' : 'dark' });
+  };
 
   return (
-    <ContextGlobal.Provider value={{favs, setFavs, theme, setTheme} }>
+    <ContextGlobal.Provider value={{favs, setFavs, state, dispatch, handleThemeChange}}>
       {children}
     </ContextGlobal.Provider>
   );
 };
 
-export const useContextGlobal = () => useContext(ContextGlobal)
+export const useContextGlobal = () => useContext(ContextGlobal);
+

@@ -1,6 +1,7 @@
 
 import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
+import { useContextGlobal } from "./Components/utils/global.context";
 import Contact from './Routes/Contact';
 import Detail from './Routes/Detail';
 import Favs from './Routes/Favs';
@@ -9,9 +10,9 @@ import { Routes, Route } from "react-router-dom";
 
 
 function App() {
-  
+  const {state} = useContextGlobal()
   return (
-      <div className="App">
+      <div className={`App ${state.theme}`}>
           <Navbar/>
           <Routes>
             <Route exact path="/" element={<Home/>} />
