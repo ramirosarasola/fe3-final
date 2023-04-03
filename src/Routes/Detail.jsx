@@ -24,11 +24,23 @@ const Detail = () => {
   // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
   return (
     <>
-      <h1>Detail Dentist id </h1>
-      <h3>{user.name}</h3>
-      <h3>{user.email}</h3>
-      <h3>{user.phone}</h3>
-      <h3>{user.website}</h3>
+      <h1>Detail Dentist {user.id} </h1>
+      <table>
+        <tbody>
+      <tr>
+        <td>Name:</td>
+        <td>Email:</td>
+        <td>Phone:</td>
+        <td>Website:</td>
+      </tr>
+      <tr>
+        <td>{user.name}z</td>
+        <td>{user.email}</td>
+        <td>{user.phone}</td>
+        <td>{user.website}</td>
+      </tr>
+      </tbody>
+    </table>
       {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
       {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
     </>
