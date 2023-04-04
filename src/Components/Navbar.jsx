@@ -11,7 +11,7 @@ const Navbar = () => {
         <Link to='/'><h3>Home</h3></Link>
         <Link to='/favs'><h3>Favs</h3></Link>
         <Link to='/contact'><h3>Contact</h3></Link>
-        <button onClick={handleThemeChange}>{state.theme === 'dark' ? 'Light' : 'Dark' }</button>
+        <button onClick={handleThemeChange}>{state.theme === 'dark' ? '☀️' : '🌙' }</button>
       </div>
     </nav>
   )

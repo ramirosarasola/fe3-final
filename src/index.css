@@ -203,7 +203,7 @@ footer .rrss img{
   position: absolute;
   right: 30px;
   top: 110px;
-  /* top: 0; */
+  height: 40px;
 }
 
 .favorito{
