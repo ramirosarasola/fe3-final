@@ -47,7 +47,7 @@ const Card = ({ name, username, id, show, renderFavs}) => {
        <Link to={`/detail/${id}`}> <img src={doctor} alt="doctor-image"/> </Link>
        <h3>Name :{name}</h3>
         <p>Username: {username}</p>
-       { ((favs.findIndex(fav => fav.id === id)) !== -1) && <p className="favorito">FAV</p>}
+        {((favs.findIndex(fav => fav.id === id)) !== -1) && <p className="favorito">FAV</p>}
         {show && <button onClick={addFav} className="favButton">Add fav</button>}
         {!show && <button onClick={removeFav} className="favButton">Eliminar</button>} 
     </div>

@@ -2,22 +2,14 @@ import React from "react";
 import { useState, useReducer } from "react";
 
 const Form = () => {
-  //Aqui deberan implementar el form completo con sus validaciones
   const [show, setShow] = useState("");
-
   const [dentist, setDentist] = useState({
     name: '',
     email:'', 
   })
-
   const handleChange = (event) =>{
-    setDentist({
-      ...dentist,
-      [event.target.name] : event.target.value
-      
-    })
+    setDentist({...dentist, [event.target.name] : event.target.value })
   }
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -31,9 +23,7 @@ const Form = () => {
     :
     setShow(`Por favor verifique su información nuevamente`)
   }
-
   return (
-
     <>
       <div>
         <form onSubmit={handleSubmit} >
@@ -45,8 +35,6 @@ const Form = () => {
         </form>
         <p>{show}</p>
       </div>
-
-
     </>
   )
 
