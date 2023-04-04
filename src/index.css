@@ -25,10 +25,24 @@ h1{
 
 nav{
   display: flex;
-  width: 80vw;
-  justify-content: flex-start;
-  padding: 1rem;
+  width: 100%;
+  justify-content: space-between;
+  background-color: #ccc;
 }
+.navbar-list{
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 30px;
+  align-items: center;
+}
+
+
+.navbar-list button{
+  width: 40px;
+  height: 30px;
+}
+
 
 a{
   color: #000;
@@ -42,13 +56,16 @@ a:hover{
 
 footer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
   padding: 2rem;
   position: relative;
   bottom: 0;
-  width: 90%;
-  height: 40px;
+  width: 70%;
+  margin: auto;
+  height: 80px;
   margin-top: 2rem;
 }
 
@@ -71,6 +88,7 @@ form{
 }
 
 .card{
+  position: relative;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -78,6 +96,7 @@ form{
   width: 200px;
   padding: 0.5rem 0.5rem 0 0.5rem;
   border: 0.5px solid rgb(136, 136, 136);
+  border-radius: 12px;
 }
 
 .card:hover{
@@ -114,15 +133,113 @@ tr:nth-child(even) {
 }
 
 .dark{
-  background-color: #12121296;
+  background-color: #00000096;
   color: white;
 }
 .dark > a {
   color: white;
 }
 
+.dark button{
+  background-color: #2a2a2a6d;
+  color: #fff;
+}
+
 /* MIS ESTILOS */
 
 .card img{
   width: 200px;
+}
+
+
+/*Navbar*/
+
+nav .red{
+  color: red;
+}
+
+.navbar-title{
+  margin-left: 30px;
+}
+
+/* Footer */
+
+.dh-logo{
+  height: 30px;
+}
+
+.red-container{
+  height: 50px;
+  width: 98vw;
+  background-color: rgba(216, 5, 5, 0.799);
+  color: #fff;
+}
+
+footer .social{
+  margin-top: 2rem;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer .rrss img{
+  width: 30px;
+  height: 30px;
+  background-color: rgb(0, 0, 0);
+}
+
+.rrss{
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.App{
+  position: relative;
+}
+
+.resetButton{
+  position: absolute;
+  right: 30px;
+  top: 110px;
+  /* top: 0; */
+}
+
+.favorito{
+  position: absolute;
+  top: 0;
+  color:orangered;
+  font-weight: bold;
+}
+
+button{
+  border-radius: 5px;
+}
+.contact-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 66.8vh;
+}
+
+.contact-container div{
+  text-align: center;
+}
+
+.contact-container form{
+  height: 200px;
+}
+.contact-container form input{
+  height: 20px;
+}
+
+.favs-container{
+  min-height: 55.4vh;
+  height: 100%;
+}
+
+.detail-container{
+  height: 64vh;
 }

@@ -30,8 +30,8 @@ const Favs = () => {
   return (
     <>
       <h1>Dentists Favs</h1>
-      <button onClick={resetFavs}>Resetear Favs</button>
-      <div className="card-grid"> 
+      <button className="resetButton" onClick={resetFavs}>Resetear Favs</button>
+      <div className="favs-container card-grid"> 
         {/* este componente debe consumir los destacados del localStorage */}
         {destacados.map((fav, index) =>{
           return(
