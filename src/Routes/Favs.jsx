@@ -10,6 +10,12 @@ const Favs = () => {
     setDestacados(newFavs)
   }
 
+  const resetFavs = () => {
+    localStorage.setItem("favs", JSON.stringify([]))
+    setDestacados([])
+  }
+  
+
   useEffect(() => {
     if(JSON.parse(localStorage.getItem('favs'))){
       setDestacados(
@@ -24,6 +30,7 @@ const Favs = () => {
   return (
     <>
       <h1>Dentists Favs</h1>
+      <button onClick={resetFavs}>Resetear Favs</button>
       <div className="card-grid"> 
         {/* este componente debe consumir los destacados del localStorage */}
         {destacados.map((fav, index) =>{
@@ -31,7 +38,7 @@ const Favs = () => {
             <Card key={index} name={fav.name} username={fav.username} id={fav.id} show={false} renderFavs={handleRenderFavs}/>
           )
         })}
-
+        
         {/* Deberan renderizar una Card por cada uno de ellos */}
       </div>
     </>
